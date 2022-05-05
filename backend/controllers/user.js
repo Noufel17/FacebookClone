@@ -6,6 +6,8 @@ const {
   validateUsername,
 } = require("../helpers/validation");
 const { generateToken } = require("../helpers/tokens");
+const { sendVerificationEmail } = require("../helpers/mailer");
+const jwt = require("jsonwebtoken");
 
 exports.regester = async (req, res) => {
   try {
@@ -70,9 +72,68 @@ exports.regester = async (req, res) => {
       { id: user._id.toString() },
       "30m"
     );
-    res.status(200).json(user);
+    const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
+    sendVerificationEmail(user.email, user.first_name, url);
+    const token = generateToken({ id: user._id.toString() }, "7d");
+    res.send({
+      id: user._id,
+      username: user.username,
+      picture: user.picture,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      token: token,
+      verfied: user.verfied,
+      message:
+        "regestration success ! please activate your account through the mail",
+    });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error.message }); // internal server error
+  }
+};
+
+exports.activateAccount = async (req, res) => {
+  try {
+    const { token } = req.body;
+    const user = jwt.verify(token, process.env.PRIVATE_KEY);
+    const found = await User.findById(user.id);
+    if (found.verified === true) {
+      res.status(400).json({ message: "this account is already activated" });
+    } else {
+      await User.findByIdAndUpdate(user.id, { verified: true });
+      res.status(200).json({ message: "account activated successfully" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message }); //internel server error
+  }
+};
+exports.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({
+        message: "this email is not connected to any account",
+      });
+    }
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return res.status(400).json({
+        message: "the password is wrong",
+      });
+    }
+    const token = generateToken({ id: user._id.toString() }, "7d");
+    res.send({
+      id: user._id,
+      username: user.username,
+      picture: user.picture,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      token: token,
+      verfied: user.verfied,
+      message: "login successful",
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message }); //internel server error
   }
 };
