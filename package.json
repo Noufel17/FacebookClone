@@ -1,0 +1,11 @@
+{
+  "name": "facebookclone",
+  "version": "1.0.0",
+  "description": "the best facebook clone ever xD",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start "
+  },
+  "author": "",
+  "license": "ISC"
+}
