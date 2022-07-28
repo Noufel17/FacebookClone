@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .division {
+    @apply bg-cyan-500 font-serif font-normal flex mx-auto justify-center text-white;
+  }
+}

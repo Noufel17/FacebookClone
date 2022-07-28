@@ -1,0 +1,32 @@
+@tailwind components;
+@layer components {
+  .input_wrap {
+    @apply relative w-80 flex justify-center flex-col items-center
+    desktop:!w-[360px];
+  }
+  .input_wrap input {
+    @apply border border-third bg-light-primary pl-3 mb-3 text-light-primary focus-visible:border-light-blue
+     outline-none rounded-lgx w-full h-12;
+  }
+  .input_wrap i {
+    @apply absolute right-[5px] bottom-[25px];
+  }
+  .input_error {
+    @apply relative bg-red-700 px-[15px] py-2.5 w-full text-white rounded text-[13px] h-12;
+  }
+  .input_error_desktop {
+    @apply absolute w-[300px] left-[-19.5rem] bottom-3;
+  }
+  .error_arrow_top {
+    @apply absolute border-t-red-700 border-t-[10px] border-r-transparent 
+    border-l-transparent border-r-[10px] border-l-[10px] bottom-[-10px];
+  }
+  .error_arrow_bottom {
+    @apply absolute border-b-red-700 border-b-[10px] border-r-transparent 
+    border-l-transparent border-r-[10px] border-l-[10px] top-[-10px];
+  }
+  .error_arrow_left {
+    @apply absolute border-l-red-700 border-l-[10px] border-t-[10px] border-t-transparent 
+    border-b-transparent border-b-[10px] right-[-10px] top-[15px];
+  }
+}

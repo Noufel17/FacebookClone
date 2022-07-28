@@ -7,5 +7,10 @@
     "test": "npm start "
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
+    "react-redux": "^8.0.1",
+    "redux": "^4.2.0"
+  }
 }

@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .login_wrapper {
+    @apply bg-light-secondary;
+  }
+  .login_wrap {
+    @apply text-light-primary h-78v
+    desktop:flex desktop:items-center desktop:justify-center desktop:max-w-[1000px] desktop:mx-auto my-auto;
+  }
+  .login1 {
+    @apply w-76 mx-auto my-0 text-xl
+    desktop:flex desktop:flex-col desktop:w-1/2;
+  }
+  .login1 img {
+    @apply desktop:w-76 desktop:ml-[-1.7rem];
+  }
+  .login1 span {
+    @apply desktop:text-[28px];
+  }
+
+  .login2 {
+    @apply text-center mx-auto;
+  }
+  .form_wrap {
+    @apply flex flex-col items-center bg-light-primary p-4 pb-8 w-84 h-fit
+     gap-4 shadow-first mx-auto my-4 rounded-lgx select-none
+     desktop:w-[400px];
+  }
+  .form_wrap button {
+    @apply font-bold text-lg w-full h-12 border-solid border-2;
+  }
+  .sign_splitter {
+    @apply h-px w-full bg-light-third;
+  }
+  .blue_btn {
+    @apply text-white rounded-lg border-none py-2 px-3 font-semibold text-sm w-full
+     bg-light-blue outline-none flex justify-center items-center gap-1.5 cursor-pointer;
+  }
+  .forgot_password {
+    @apply text-light-blue text-sm cursor-pointer 
+     hover:underline;
+  }
+  .open_signup {
+    @apply bg-light-green !w-9/12 !font-semibold mt-4;
+  }
+  .signup_extra {
+    @apply text-sm;
+  }
+
+  /*--register css--*/
+
+  .register {
+    @apply absolute top-1/2 left-1/2 bg-light-primary translate-x-[-50%] w-[350px] h-fit 
+     translate-y-[-50%] shadow-first shadow-sm rounded-[10px] p-[15px] pb-4 
+     text-light-primary;
+  }
+  .register_header {
+    @apply relative flex flex-col gap-[10px] pb-[10px] border-solid border-b-[1px]
+     border-b-third;
+  }
+  .register_header i {
+    @apply absolute right-0 cursor-pointer;
+  }
+  .register_header span:first-of-type {
+    @apply font-bold text-[32px];
+  }
+  .register_header span:last-of-type {
+    @apply text-[15px] text-light-secondary;
+  }
+  .register_form {
+    @apply w-full flex flex-col items-center;
+  }
+  .register_line {
+    @apply px-[7px] py-0 flex flex-col gap-[10px];
+  }
+  .register_column {
+    @apply relative self-start mb-[10px] px-0 py-[10px];
+  }
+  .register_line_header {
+    @apply flex items-center gap-[2px] text-light-secondary text-[13px];
+  }
+  .register_grid {
+    @apply grid mt-[5px] grid-cols-[repeat(3,1fr)] gap-[10px] w-full h-[35px];
+  }
+  .register_grid select {
+    @apply w-[90px] text-[16px] text-light-primary bg-light-primary rounded-[5px] 
+    cursor-pointer border-[1px] border-solid border-light-secondary;
+  }
+  .register_grid label {
+    @apply flex justify-between items-center py-0 px-[10px] w-[90px] text-[16px] text-light-primary 
+    bg-light-primary rounded-[5px] cursor-pointer border-[1px] border-solid border-light-secondary;
+  }
+  .register_info {
+    @apply text-[11px] mt-[10px] text-light-secondary;
+  }
+  .register_info span {
+    @apply text-light-blue;
+  }
+  .register_btn_wrapper {
+    @apply w-full flex items-center justify-center mt-0 mr-0 mb-0 ml-0;
+  }
+  .login_footer {
+    @apply h-[22vh] bg-light-primary p-6;
+  }
+  .login_footer_wrap {
+    @apply flex flex-wrap gap-x-[10px] gap-y-[3px] text-light-secondary text-[13px] 
+    max-w-[350px] mx-auto my-0 desktop:max-w-[900px] medium:max-w-[650px] small:max-w-[520px];
+  }
+  .login_footer_wrap a {
+    @apply flex items-center hover:underline;
+  }
+  .footer_splitter {
+    @apply w-full max-w-[900px] h-[1px] bg-light-third mx-auto my-[10px];
+  }
+  .footer_square {
+    @apply bg-light-secondary h-[19px] w-[30px] flex items-center justify-center border-[1px]
+    border-third;
+  }
+  .footer_square i {
+    @apply invert-[40%];
+  }
+}
